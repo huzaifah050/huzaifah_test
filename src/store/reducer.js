@@ -5,7 +5,6 @@ import {
 	ADD_PRODUCT,
 	DELETE_PRODUCT,
 	EDIT_PRODUCT,
-	ADD_DELETED,
 } from './constants';
 
 const initState = {

@@ -8,10 +8,10 @@ import Spinner from 'react-bootstrap/Spinner';
 function HomePage() {
 	const dispatch = useDispatch();
 	const state = useSelector((state) => state);
-	console.log(state);
+
 	useEffect(() => {
 		dispatch(fetch_products());
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<Container>
