@@ -28,6 +28,8 @@ function HomePage() {
 				state.products.map((product) => {
 					if (!product?.deleted) {
 						return <Product key={product.id} product={product} />;
+					} else {
+						return null;
 					}
 				})
 			)}
