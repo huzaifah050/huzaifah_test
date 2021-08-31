@@ -4,6 +4,7 @@ import {
 	FETCH_PRODUCTS_FAILURE,
 	ADD_PRODUCT,
 	DELETE_PRODUCT,
+	EDIT_PRODUCT,
 } from './constants';
 
 const initState = {
@@ -38,6 +39,17 @@ const reducer = (state = initState, { type, payload }) => {
 				(product) => product.id !== payload
 			);
 			return { ...state, products: filtered_products };
+
+		case EDIT_PRODUCT:
+			const { id, updated_info } = payload;
+			const updated_products = state.products.map((product) => {
+				if (product.id === id) {
+					return { ...product, ...updated_info };
+				} else {
+					return product;
+				}
+			});
+			return { ...state, products: updated_products };
 		default:
 			return state;
 	}

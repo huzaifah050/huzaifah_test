@@ -5,6 +5,7 @@ import {
 	FETCH_PRODUCTS_REQUEST,
 	ADD_PRODUCT,
 	DELETE_PRODUCT,
+	EDIT_PRODUCT,
 } from './constants';
 
 export const fetch_products_request = () => {
@@ -52,5 +53,15 @@ export const delete_product = (id) => {
 	return {
 		type: DELETE_PRODUCT,
 		payload: id,
+	};
+};
+
+export const edit_product = (id, updated_info) => {
+	return {
+		type: EDIT_PRODUCT,
+		payload: {
+			id,
+			updated_info,
+		},
 	};
 };
