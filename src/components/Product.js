@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 import EditModal from './EditModal';
 import { get_current_price } from '../utils/helpers';
+import HistoricalCard from './HistoricalCard';
 function Product({ product }) {
 	const { prices } = product;
 
@@ -13,14 +14,19 @@ function Product({ product }) {
 		dispatch(delete_product(id));
 	};
 	const current_obj = get_current_price(prices);
-	console.log(current_obj);
 
 	return (
 		<Accordion>
 			<Accordion.Item eventKey={product.id}>
 				<Accordion.Header>{product.name}</Accordion.Header>
 				<Accordion.Body>
-					<p>{`Current price: ${current_obj.price}`}</p>
+					<p>{`Current price:$${current_obj.price}`}</p>
+
+					<div className="">
+						<h5>Historical prices</h5>
+
+						{prices && <HistoricalCard prices={prices} />}
+					</div>
 
 					<div className="product_btn_group">
 						<EditModal info={product} />
