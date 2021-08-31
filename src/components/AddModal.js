@@ -16,7 +16,7 @@ function AddModal() {
 	const handleChange = (e) => {
 		setProduct({ ...product, [e.target.id]: e.target.value });
 	};
-	console.log(product);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const new_product = {

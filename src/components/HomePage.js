@@ -21,9 +21,11 @@ function HomePage() {
 			{state.loading ? (
 				<h1>Loading...</h1>
 			) : (
-				state.products.map((product) => (
-					<Product key={product.id} product={product} />
-				))
+				state.products.map((product) => {
+					if (!product?.deleted) {
+						return <Product key={product.id} product={product} />;
+					}
+				})
 			)}
 		</Container>
 	);
