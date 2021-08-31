@@ -35,17 +35,7 @@ const reducer = (state = initState, { type, payload }) => {
 			};
 		case ADD_PRODUCT:
 			return { ...state, products: [...state.products, payload] };
-		// case DELETE_PRODUCT:
-		// 	const filtered_products = state.products.filter(
-		// 		(product) => product.id !== payload
-		// 	);
-		// 	return { ...state, products: filtered_products };
 
-		// const obj = filtered_product[0];
-		// delete obj['name'];
-
-		// return { ...state, products: [...state.products, obj] };
-		// return { ...state, products: filtered_products };
 		case DELETE_PRODUCT:
 			const deleted_products = state.products.map((product) => {
 				if (product.id === payload) {
