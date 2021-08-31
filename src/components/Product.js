@@ -3,6 +3,7 @@ import { delete_product } from '../store/actions';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 import EditModal from './EditModal';
+import { get_current_price } from '../utils/helpers';
 function Product({ product }) {
 	const { prices } = product;
 
@@ -11,28 +12,16 @@ function Product({ product }) {
 	const handleDelete = (id) => {
 		dispatch(delete_product(id));
 	};
-
-	// let current_date = new Date(prices[0].date);
-	// for (let index = 0; index < prices.length; index++) {
-	// 	const element = new Date(prices[index].date).getTime();
-	// 	if (element > current_date) {
-	// 		current_date = element;
-	// 	}
-	// 	// return current_date;
-	// }
+	const current_obj = get_current_price(prices);
+	console.log(current_obj);
 
 	return (
 		<Accordion>
 			<Accordion.Item eventKey={product.id}>
 				<Accordion.Header>{product.name}</Accordion.Header>
 				<Accordion.Body>
-					{prices.map((price) => {
-						return (
-							<div key={price.id}>
-								<p>{new Date(price.date).getHours()}</p>
-							</div>
-						);
-					})}
+					<p>{`Current price: ${current_obj.price}`}</p>
+
 					<div className="product_btn_group">
 						<EditModal info={product} />
 						<Button onClick={() => handleDelete(product.id)} variant="danger">

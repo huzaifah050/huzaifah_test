@@ -4,7 +4,7 @@ import { fetch_products } from '../store/actions';
 import Product from './Product';
 import Container from 'react-bootstrap/Container';
 import AddModal from './AddModal';
-
+import Spinner from 'react-bootstrap/Spinner';
 function HomePage() {
 	const dispatch = useDispatch();
 	const state = useSelector((state) => state);
@@ -19,7 +19,11 @@ function HomePage() {
 
 			<AddModal />
 			{state.loading ? (
-				<h1>Loading...</h1>
+				<div>
+					<Spinner animation="border" role="status">
+						<span className="visually-hidden">Loading...</span>
+					</Spinner>
+				</div>
 			) : (
 				state.products.map((product) => {
 					if (!product?.deleted) {
