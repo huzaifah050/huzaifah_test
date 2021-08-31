@@ -3,6 +3,8 @@ import {
 	FETCH_PRODUCTS_FAILURE,
 	FETCH_PRODUCTS_SUCCESS,
 	FETCH_PRODUCTS_REQUEST,
+	ADD_PRODUCT,
+	DELETE_PRODUCT,
 } from './constants';
 
 export const fetch_products_request = () => {
@@ -36,5 +38,19 @@ export const fetch_products = () => {
 				console.log(err);
 				dispatch(fetch_products_failure);
 			});
+	};
+};
+
+export const add_product = (product) => {
+	return {
+		type: ADD_PRODUCT,
+		payload: product,
+	};
+};
+
+export const delete_product = (id) => {
+	return {
+		type: DELETE_PRODUCT,
+		payload: id,
 	};
 };
