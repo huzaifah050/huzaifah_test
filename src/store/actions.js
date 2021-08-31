@@ -31,7 +31,7 @@ export const fetch_products = () => {
 	return (dispatch) => {
 		dispatch(fetch_products_request);
 		axios
-			.get(`http://www.mocky.io/v2/5c3e15e63500006e003e9795`)
+			.get(`https://www.mocky.io/v2/5c3e15e63500006e003e9795`)
 			.then((response) => {
 				dispatch(fetch_products_success(response.data.products));
 			})
