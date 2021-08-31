@@ -1,0 +1,10 @@
+.list-heading {
+	color: #333;
+	margin-top: 3rem;
+	font-size: 1.6rem;
+}
+
+.product_btn_group {
+	display: flex;
+	gap: 0.5rem;
+}
