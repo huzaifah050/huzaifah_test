@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { add_product } from '../store/actions';
 function AddModal() {
 	const [show, setShow] = useState(false);
+	const [name_error, setname_error] = useState(false);
+	const [price_error, setprice_error] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 	const dispatch = useDispatch();
@@ -19,6 +21,10 @@ function AddModal() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setname_error(false);
+		setprice_error(false);
+		if (product.name === '') return setname_error(true);
+		if (product.price === '') return setprice_error(true);
 		const new_product = {
 			id: Math.round(Math.random() * 10000000000),
 			name: product.name,
@@ -61,6 +67,9 @@ function AddModal() {
 								placeholder="Enter product name"
 							/>
 						</Form.Group>
+						{name_error ? (
+							<Form.Text className="text-danger">Required</Form.Text>
+						) : null}
 
 						<Form.Group className="mb-3">
 							<Form.Label>Price</Form.Label>
@@ -72,6 +81,11 @@ function AddModal() {
 								onChange={handleChange}
 							/>
 						</Form.Group>
+						<div>
+							{price_error ? (
+								<Form.Text className="text-danger">Required</Form.Text>
+							) : null}
+						</div>
 
 						<Button variant="primary" type="submit">
 							Add

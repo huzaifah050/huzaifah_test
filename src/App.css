@@ -8,3 +8,11 @@
 	display: flex;
 	gap: 0.5rem;
 }
+.home_error_message {
+	color: rgb(133, 13, 13);
+}
+
+.form_error {
+	margin-right: 0px;
+	background-color: red;
+}

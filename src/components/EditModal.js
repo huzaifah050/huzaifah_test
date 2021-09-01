@@ -19,6 +19,8 @@ function EditModal({ info }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if (product.name === '') return;
+		if (product.price === '') return;
 		const new_product = {
 			...info,
 			name: product.name,

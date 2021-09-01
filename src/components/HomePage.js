@@ -13,6 +13,7 @@ function HomePage() {
 		dispatch(fetch_products());
 	}, [dispatch]);
 
+	console.log(state);
 	return (
 		<Container>
 			<h1 className="list-heading">Lists of products</h1>
@@ -33,6 +34,7 @@ function HomePage() {
 					}
 				})
 			)}
+			{state.error && <p className="home_error_message"> {state.error}</p>}
 		</Container>
 	);
 }

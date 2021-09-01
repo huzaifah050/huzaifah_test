@@ -29,15 +29,15 @@ export const fetch_products_failure = (err) => {
 };
 export const fetch_products = () => {
 	return (dispatch) => {
-		dispatch(fetch_products_request);
+		dispatch(fetch_products_request());
 		axios
 			.get(`https://www.mocky.io/v2/5c3e15e63500006e003e9795`)
 			.then((response) => {
 				dispatch(fetch_products_success(response.data.products));
 			})
 			.catch((err) => {
-				console.log(err);
-				dispatch(fetch_products_failure);
+				console.log(err.message);
+				dispatch(fetch_products_failure(err.message));
 			});
 	};
 };
